@@ -141,19 +141,33 @@ VBAPLib {
 
     *loadDefs { |options|
         var defs;
+		var default = Udef.loadOnInit;
+		Udef.loadOnInit_(options.sendSynthDefsAtStartup);
+		this.loadUDefsFromDisk(options);
+		Udef.loadOnInit_(default);
 
+    }
+
+	*writeDefaultSynthDefs {
+		Udef.defsFolders = Udef.defsFolders ++ [
+            WFSArrayPan.filenameSymbol.asString.dirname +/+ "UnitDefs",
+			VBAPLib.filenameSymbol.asString.dirname +/+ "UnitDefs"
+		];
+
+		Udef.userDefsFolder = File.getcwd +/+ "UnitDefs";
+
+		Udef.loadAllFromDefaultDirectory.do(_.writeDefFile)
+	}
+
+	*loadUDefsFromDisk { |options|
 		Udef.defsFolders = if(options.loadDefsAtStartup){ Udef.defsFolders }{[]} ++ [
-            WFSArrayPan.filenameSymbol.asString.dirname +/+ "UnitDefs"
+            WFSArrayPan.filenameSymbol.asString.dirname +/+ "UnitDefs",
+			VBAPLib.filenameSymbol.asString.dirname +/+ "UnitDefs"
 		] ++ options.extraDefFolders;
 
 		Udef.userDefsFolder = File.getcwd +/+ "UnitDefs";
 
-		Udef.defsFolders.add(
-            VBAPLib.filenameSymbol.asString.dirname +/+ "UnitDefs"
-        );
-
-       Udef.loadAllFromDefaultDirectory
-
-    }
+		Udef.loadAllFromDefaultDirectory;
+	}
 
 }
