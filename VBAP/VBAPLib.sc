@@ -62,7 +62,7 @@ VBAPLib {
 
 	*prStartupServers{ |options| //servers, send = true, allDefs = true|
 
-		var serverOptions = this.serverOptions( options.numOutputChannels, options.device );
+		var serverOptions = this.serverOptions( options );
 
 		var servers = options.serverDescs.collect{ |desc|
 			Server(desc[0], NetAddr(desc[1], desc[2] ), serverOptions )
@@ -119,14 +119,15 @@ VBAPLib {
 		//ULib.serversWindow;
 	}
 
-	*serverOptions { |numOutputChannels, device|
+	*serverOptions { |options|
 		^ServerOptions()
 		.memSize_(8192*16)
 		.numWireBufs_(64*2)
 		.numPrivateAudioBusChannels_(1024)
-		.outDevice_(device)
-		.inDevice_(device)
-		.numOutputBusChannels_(numOutputChannels)
+		.outDevice_(options.device)
+		.inDevice_(options.device)
+		.numOutputBusChannels_(options.numOutputChannels)
+		.numInputBusChannels_(options.numInputChannels)
 	}
 
 	//only needs to be run once.
