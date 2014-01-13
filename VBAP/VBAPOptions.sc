@@ -115,8 +115,8 @@ VBAPOptions {
 				device: "JackRouter",//"HDSPe MADI (Slot-2)",
 				numInputChannels: 32,
 				numOutputChannels: 32,
-				angles: nil,
-				distances:nil,
+				angles: speakerPresets[\soniclab][\angles],
+				distances:speakerPresets[\soniclab][\angles],
 				loadDefsAtStartup: true,
 				loadUdefViaRemoteFolder: false,
 				remoteFolderForLoading: "",
@@ -173,6 +173,6 @@ VBAPOptions {
 		sendSynthDefsAtStartup = false, loadUdefViaRemoteFolder = false, remoteFolderForLoading,
 		isSlave = false, extraDefFolders|
 		^super.newCopyArgs(serverDescs, device, numInputChannels, numOutputChannels, angles, distances, loadDefsAtStartup,
-		sendSynthDefsAtStartup, loadUdefViaRemoteFolder, remoteFolderForLoading, isSlave = false, extraDefFolders ? [])
+		sendSynthDefsAtStartup, loadUdefViaRemoteFolder, remoteFolderForLoading, isSlave, extraDefFolders ? [])
 	}
 }
