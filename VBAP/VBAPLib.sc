@@ -128,6 +128,7 @@ VBAPLib {
 		.inDevice_(options.device)
 		.numOutputBusChannels_(options.numOutputChannels)
 		.numInputBusChannels_(options.numInputChannels)
+		.maxSynthDefs_(2048)
 	}
 
 	//only needs to be run once.
