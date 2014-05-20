@@ -70,7 +70,7 @@ VBAPLib {
 
 		servers.do{ |s|
 			if(s.isLocal){
-				1.0.wait;
+				0.5.wait;
 				s.boot;
 			}
 		};
@@ -92,6 +92,9 @@ VBAPLib {
 			"*** Will start waiting for servers".postln;
 			ULib.waitForServersToBoot;
 			"*** Servers booted\n".postln;
+			ULib.allServers.do{ |s|
+				s.audioBusAllocator.reserve(s.options.firstPrivateBus, 64, true);
+			};
 
 			//Udef SYNTHEDEFS
 			this.loadDefs(options);
