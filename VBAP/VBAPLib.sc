@@ -94,6 +94,9 @@ VBAPLib {
 			"*** Servers booted\n".postln;
 			ULib.allServers.do{ |s|
 				s.audioBusAllocator.reserve(s.options.firstPrivateBus, 64, true);
+				s.controlBusAllocator.reserve(0, 64, true);
+				//s.controlBusAllocator.reserve(1400, 64, true);
+				//s.controlBusAllocator.reserve(1500, 64, true);
 			};
 
 			//Udef SYNTHEDEFS
