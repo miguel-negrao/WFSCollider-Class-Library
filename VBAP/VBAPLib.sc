@@ -34,7 +34,7 @@ VBAPLib {
 	//stereo, quad, octo
 	classvar <>previewMode;
 
-	*startupR { |options, serverOptions|
+	*startupR { |options, serverOptions, startGuis = true|
 
 		var defs;
 
@@ -46,10 +46,10 @@ VBAPLib {
 			UChain( \bufSoundFile, \stereoOutput ).useSndFileDur
 		};
 
-		this.prStartupServers(options, serverOptions);
+		this.prStartupServers(options, serverOptions, startGuis);
 
 		if(options.isSlave.not) {
-			this.prStartupGUIs;
+			if(startGuis){this.prStartupGUIs};
 			CmdPeriod.add(this);
 		}
 	}
@@ -60,7 +60,7 @@ VBAPLib {
 		}).play(AppClock)
 	}
 
-	*prStartupServers{ |options, serverOptions| //servers, send = true, allDefs = true|
+	*prStartupServers{ |options, serverOptions, startGuis| //servers, send = true, allDefs = true|
 
 		var serverOptions2 = serverOptions ?? { this.serverOptions( options ) };
 
@@ -82,7 +82,7 @@ VBAPLib {
 		"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n".postln;
 		if( options.serverDescs.size > 1 ) {
 			//this needs to be here and not somewhere else for some misterious reason I can't remember
-			ULib.serversWindow;
+			if(startGuis){ ULib.serversWindow };
 		};
 		//client and single startup
 		if(options.isSlave.not) {
