@@ -1,0 +1,9 @@
+(
+  name: "WFSCollider-Class-Library",
+  summary: "Wave Field Synthesis and VBAP spatialization",
+  version: "2.2.1",
+  schelp: "WFSCollider V2.0 Overview",
+  dependencies: ["MathLib", "NetLib", "PopUpTreeMenu", "VectorSpace", "wslib", "XML", "UnitLib"],
+  license: "GPL3",
+  copyright: "W. Snoei, R. Ganchrow, J. Truetzler, M. Negrão, 2006-2015"
+)
