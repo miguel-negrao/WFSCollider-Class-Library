@@ -3,7 +3,7 @@
   summary: "Wave Field Synthesis and VBAP spatialization",
   version: "2.2.1-immlib",
   schelp: "WFSCollider V2.0 Overview",
-  dependencies: ["MathLib", "NetLib", "PopUpTreeMenu", "VectorSpace", "wslib", "XML", "https://github.com/miguel-negrao/Unit-Lib.git@ImmLib"],
+  dependencies: ["MathLib", "NetLib", "PopUpTreeMenu", "VectorSpace", "wslib", "XML"],
   license: "GPL3",
   copyright: "W. Snoei, R. Ganchrow, J. Truetzler, M. Negrão, 2006-2015"
 )
